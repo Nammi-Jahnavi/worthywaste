@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard • Worthy Waste</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Page-only cosmetics to complement styles.css without JS */
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .table { width: 100%; border-collapse: collapse; }
+    .table th, .table td { padding: 10px; border-bottom: 1px solid #1b4b34; text-align: left; }
+    .section-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .chip { display:inline-block; padding:4px 8px; border-radius:999px; border:1px solid #1b4b34; background:#0f221a; font-size:12px; }
+    .hero { display:flex; align-items:center; justify-content:space-between; gap:16px; background:linear-gradient(135deg, #143826, #0f2a1e); border: 1px solid #1b4b34; border-radius:16px; padding:16px; }
+    .hero .illustration { width:320px; height:140px; border:1px dashed #1b4b34; border-radius:12px; display:grid; place-items:center; color:var(--muted); }
+    .subnav { position: sticky; top:64px; background: rgba(9,22,17,0.6); backdrop-filter: blur(6px); border:1px solid #163d2b; border-radius:12px; padding:8px; display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+    .pill { display:inline-block; padding:8px 12px; border-radius:999px; background:#0f221a; border:1px solid #1b4b34; color:var(--muted); text-decoration:none; font-size:13px; }
+    .pill:hover { color:var(--text); border-color:#215a3c; }
+    .filters { display:flex; gap:8px; flex-wrap:wrap; }
+    @media (max-width: 900px) { .kpis { grid-template-columns: 1fr 1fr; } .hero { flex-direction:column; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">Worthy Waste</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="supplier.html">Supplier</a>
+        <a href="buyer.html">Buyer</a>
+        <a href="analytics.html">Analytics</a>
+        <a class="active" href="admin.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding:24px 0;">
+    <!-- Hero banner -->
+    <section class="hero">
+      <div>
+        <h1 style="margin:0;">Admin Dashboard</h1>
+        <p class="small" style="margin:6px 0 0;">Moderate waste, manage bookings, curate partners, and track impact.</p>
+        <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="#waste-queue">Review Waste</a>
+          <a class="btn btn-outline" href="#bookings">Fulfillment</a>
+          <a class="btn btn-outline" href="#analytics">Analytics</a>
+        </div>
+      </div>
+      <div class="illustration">Admin Overview</div>
+    </section>
+
+    <!-- Sub navigation -->
+    <nav class="subnav">
+      <a class="pill" href="#kpis">Overview</a>
+      <a class="pill" href="#waste-queue">Waste Queue</a>
+      <a class="pill" href="#listings">Marketplace</a>
+      <a class="pill" href="#bookings">Bookings</a>
+      <a class="pill" href="#partners">Partners</a>
+      <a class="pill" href="#analytics">Analytics</a>
+      <a class="pill" href="#settings">Settings</a>
+      <a class="pill" href="#users">Users & Roles</a>
+      <a class="pill" href="#audit">Audit Logs</a>
+      <a class="pill" href="#reports">Reports</a>
+    </nav>
+
+    <!-- KPIs -->
+    <section id="kpis" style="margin-top:16px;">
+      <div class="kpis">
+        <div class="card">
+          <div class="small">Total Waste Completed</div>
+          <div class="counter-value">0 kg</div>
+        </div>
+        <div class="card">
+          <div class="small">Compost Produced</div>
+          <div class="counter-value">0 kg</div>
+        </div>
+        <div class="card">
+          <div class="small">CO₂ Reduced</div>
+          <div class="counter-value">0 kg</div>
+        </div>
+        <div class="card">
+          <div class="small">Active Bookings</div>
+          <div class="counter-value">0</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Waste Queue -->
+    <section id="waste-queue" style="margin-top:24px;">
+      <div class="section-head">
+        <h3>Waste Queue</h3>
+        <span class="muted">Incoming items awaiting review</span>
+      </div>
+      <div class="card" style="margin:8px 0;">
+        <div class="small" style="margin-bottom:8px;">Quick Filters</div>
+        <div class="filters">
+          <span class="chip">Requested</span>
+          <span class="chip">Confirmed</span>
+          <span class="chip">Picked</span>
+          <span class="chip">Completed</span>
+          <span class="chip">Organic</span>
+          <span class="chip">Paper</span>
+          <span class="chip">Plastic</span>
+        </div>
+      </div>
+      <div class="card">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Weight (kg)</th>
+              <th>Location</th>
+              <th>Supplier</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Food Scraps</td>
+              <td>5.0</td>
+              <td>Pune</td>
+              <td>Green Cafe</td>
+              <td><span class="chip">Requested</span></td>
+            </tr>
+            <tr>
+              <td>Yard Waste</td>
+              <td>12.0</td>
+              <td>Mumbai</td>
+              <td>City Parks</td>
+              <td><span class="chip">Confirmed</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Marketplace Listings -->
+    <section id="listings" style="margin-top:24px;">
+      <div class="section-head">
+        <h3>Marketplace Listings</h3>
+        <span class="muted">Curate and feature listings</span>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <strong>Paper</strong>
+            <span class="badge">30 kg</span>
+          </div>
+          <div class="small">Location: Nashik</div>
+          <div class="small">Price: ₹8/kg</div>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <strong>Organic</strong>
+            <span class="badge">18 kg</span>
+          </div>
+          <div class="small">Location: Pune</div>
+          <div class="small">Price: Free for NGOs</div>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <strong>Plastic</strong>
+            <span class="badge">22 kg</span>
+          </div>
+          <div class="small">Location: Mumbai</div>
+          <div class="small">Price: ₹12/kg</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bookings & Fulfillment -->
+    <section id="bookings" style="margin-top:24px;">
+      <div class="section-head">
+        <h3>Bookings & Fulfillment</h3>
+        <span class="muted">Track and update status</span>
+      </div>
+      <div class="card">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Buyer</th>
+              <th>Waste</th>
+              <th>Status</th>
+              <th>Last Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GreenCycle Vermicompost</td>
+              <td>Organic (18 kg)</td>
+              <td><span class="chip">Picked</span></td>
+              <td class="small">2025-09-13</td>
+            </tr>
+            <tr>
+              <td>FoodCare NGO</td>
+              <td>Edible Food (10 kg)</td>
+              <td><span class="chip">Confirmed</span></td>
+              <td class="small">2025-09-12</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Partners Directory -->
+    <section id="partners" style="margin-top:24px;">
+      <div class="section-head">
+        <h3>Partners</h3>
+        <span class="muted">NGOs, Animal Shelters, Composters, Biogas</span>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <strong>FoodCare NGO</strong>
+            <span class="badge">NGO</span>
+          </div>
+          <div class="small">Area: Mumbai</div>
+          <div class="small">Priority: Edible Food</div>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <strong>PawShelter</strong>
+            <span class="badge">Animal Shelter</span>
+          </div>
+          <div class="small">Area: Nashik</div>
+          <div class="small">Need: Edible leftovers</div>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <strong>GreenCycle Vermicompost</strong>
+            <span class="badge">Vermicomposter</span>
+          </div>
+          <div class="small">Area: Pune</div>
+          <div class="small">Capacity: 500 kg/day</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analytics Snapshot -->
+    <section id="analytics" style="margin-top:24px;">
+      <div class="section-head">
+        <h3>Analytics Snapshot</h3>
+        <span class="muted">High-level overview</span>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="small">Status Breakdown</div>
+          <div style="background:#0f221a;border:1px solid #1b4b34;border-radius:8px;height:16px;margin:8px 0 6px;">
+            <div style="width:40%;height:100%;background:var(--accent);border-radius:8px;"></div>
+          </div>
+          <div class="small">Requested 40%</div>
+          <div style="background:#0f221a;border:1px solid #1b4b34;border-radius:8px;height:16px;margin:8px 0 6px;">
+            <div style="width:30%;height:100%;background:var(--accent);border-radius:8px;"></div>
+          </div>
+          <div class="small">Confirmed 30%</div>
+          <div style="background:#0f221a;border:1px solid #1b4b34;border-radius:8px;height:16px;margin:8px 0 6px;">
+            <div style="width:20%;height:100%;background:var(--accent);border-radius:8px;"></div>
+          </div>
+          <div class="small">Picked 20%</div>
+          <div style="background:#0f221a;border:1px solid #1b4b34;border-radius:8px;height:16px;margin:8px 0 6px;">
+            <div style="width:10%;height:100%;background:var(--accent);border-radius:8px;"></div>
+          </div>
+          <div class="small">Completed 10%</div>
+        </div>
+        <div class="card">
+          <div class="small">Top Suppliers</div>
+          <ol>
+            <li>Green Cafe — 120 kg</li>
+            <li>City Parks — 90 kg</li>
+            <li>Office Hub — 75 kg</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings (read-only placeholders) -->
+    <section id="settings" style="margin-top:24px;">
+      <div class="section-head">
+        <h3>Settings</h3>
+        <span class="muted">Business rules and defaults</span>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="small">Price/kg Defaults</div>
+          <div class="muted">Organic: ₹6, Paper: ₹8, Plastic: ₹12</div>
+        </div>
+        <div class="card">
+          <div class="small">NGO Priority Window</div>
+          <div class="muted">2 hours hold on edible items</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Users & Roles -->
+    <section id="users" style="margin-top:24px;">
+      <div class="section-head">
+        <h3>Users & Roles</h3>
+        <span class="muted">Role-based access (read-only demo)</span>
+      </div>
+      <div class="card">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Asha Admin</td>
+              <td>asha.admin@example.com</td>
+              <td><span class="chip">Admin</span></td>
+              <td class="small">Active</td>
+            </tr>
+            <tr>
+              <td>Om Ops</td>
+              <td>om.ops@example.com</td>
+              <td><span class="chip">Ops Manager</span></td>
+              <td class="small">Active</td>
+            </tr>
+            <tr>
+              <td>Seema Shelter</td>
+              <td>seema@pawshelter.org</td>
+              <td><span class="chip">Buyer (Shelter)</span></td>
+              <td class="small">Invited</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Audit Logs -->
+    <section id="audit" style="margin-top:24px;">
+      <div class="section-head">
+        <h3>Audit Logs</h3>
+        <span class="muted">Recent administrative actions</span>
+      </div>
+      <div class="card">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>User</th>
+              <th>Action</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="small">2025-09-13 10:30</td>
+              <td class="small">Asha Admin</td>
+              <td><span class="chip">Approve Waste</span></td>
+              <td class="small">ID: WST-1042 • Status → Confirmed</td>
+            </tr>
+            <tr>
+              <td class="small">2025-09-13 09:55</td>
+              <td class="small">Om Ops</td>
+              <td><span class="chip">Update Booking</span></td>
+              <td class="small">ID: BKG-2201 • Status → Picked</td>
+            </tr>
+            <tr>
+              <td class="small">2025-09-12 18:15</td>
+              <td class="small">Asha Admin</td>
+              <td><span class="chip">Edit Partner</span></td>
+              <td class="small">FoodCare NGO • Added service area: Andheri</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Reports -->
+    <section id="reports" style="margin-top:24px;">
+      <div class="section-head">
+        <h3>Reports</h3>
+        <span class="muted">Downloadable summaries (static demo)</span>
+      </div>
+      <div class="card">
+        <ul style="margin:0; padding-left:18px;">
+          <li>Waste Processed (Monthly) — CSV</li>
+          <li>Top Suppliers (Quarterly) — CSV</li>
+          <li>Bookings & SLA (Weekly) — CSV</li>
+          <li>Partner Utilization (Monthly) — CSV</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

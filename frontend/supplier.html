@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supplier • Worthy Waste</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">Worthy Waste</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="supplier.html">Supplier</a>
+        <a href="buyer.html">Buyer</a>
+        <a href="analytics.html">Analytics</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding:24px 0;">
+    <!-- Hero banner -->
+    <section class="card" style="display:flex; align-items:center; justify-content:space-between; gap:16px; background:linear-gradient(135deg,#12392660,#0f221a60); border-color:#215a3c;">
+      <div>
+        <h1 style="margin:0;">Supplier Dashboard</h1>
+        <p class="small" style="margin:6px 0 0;">Log your waste in seconds, boost your Eco Score, and help partners turn waste into worth.</p>
+        <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="#addWaste">Add New Waste</a>
+          <a class="btn btn-outline" href="#history">View History</a>
+        </div>
+      </div>
+      <div class="illustration-placeholder" style="max-width:320px; height:140px;">Sustainable Supplier</div>
+    </section>
+
+    <!-- Quick badges -->
+    <section class="grid grid-3" style="margin-top:16px;">
+      <div class="card"><div class="small">Today</div><div class="counter-value">0 items</div></div>
+      <div class="card"><div class="small">This Week</div><div class="counter-value">0 kg</div></div>
+      <div class="card"><div class="small">Eco Score</div><div id="ecoScoreBadge" class="badge">Eco Score: 0</div></div>
+    </section>
+
+    <!-- Two-column content -->
+    <section class="grid grid-2" style="margin-top:16px;">
+      <!-- Left: Enhanced Add Waste form -->
+      <div class="card" id="addWaste">
+        <h3 style="margin-top:0;">Add Waste</h3>
+        <p class="small" style="margin-top:0;">Provide details so buyers can quickly match and pick up.</p>
+        <form id="addWasteForm" class="form" enctype="multipart/form-data">
+          <div style="display:grid; gap:12px; grid-template-columns: 1fr 1fr;">
+            <div>
+              <label class="label" for="supplierName">Your Name</label>
+              <input id="supplierName" class="input" type="text" placeholder="e.g., Green Cafe" required />
+            </div>
+            <div>
+              <label class="label" for="wasteLocation">Location</label>
+              <input id="wasteLocation" class="input" type="text" placeholder="City / Area" required />
+            </div>
+          </div>
+
+          <div style="display:grid; gap:12px; grid-template-columns: 1fr 1fr;">
+            <div>
+              <label class="label" for="wasteType">Type</label>
+              <select id="wasteType" class="select" required>
+                <option value="">Select type</option>
+                <option>Food Scraps</option>
+                <option>Yard Waste</option>
+                <option>Paper</option>
+                <option>Plastic</option>
+                <option>Metal</option>
+                <option>Glass</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="label" for="wasteWeight">Weight (kg)</label>
+              <input id="wasteWeight" class="input" type="number" step="0.1" min="0.1" placeholder="e.g., 5" required />
+            </div>
+          </div>
+
+          <div>
+            <label class="label" for="wastePhoto">Photo (optional)</label>
+            <input id="wastePhoto" class="file" type="file" accept="image/*" />
+          </div>
+
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-primary" type="submit">Submit Waste</button>
+            <a class="btn btn-outline" href="#history">Go to History</a>
+          </div>
+          <div id="addWasteMsg" class="small"></div>
+        </form>
+      </div>
+
+      <!-- Right: Tips and Partners -->
+      <div class="grid" style="gap:16px;">
+        <div class="card">
+          <h3 style="margin-top:0;">Tips to Maximize Eco Score</h3>
+          <ul class="small" style="margin:0; padding-left:18px; line-height:1.6;">
+            <li>Sort waste by type before pickup.</li>
+            <li>Provide clear photos for faster approvals.</li>
+            <li>Keep organic waste fresh to get NGO priority.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;">Partner Highlights</h3>
+          <div class="grid grid-3">
+            <div class="card">
+              <div style="display:flex; align-items:center; justify-content:space-between;">
+                <strong>GreenCycle</strong>
+                <span class="badge">Vermicomposter</span>
+              </div>
+              <div class="small">Pune • 500 kg/day</div>
+            </div>
+            <div class="card">
+              <div style="display:flex; align-items:center; justify-content:space-between;">
+                <strong>FoodCare</strong>
+                <span class="badge">NGO</span>
+              </div>
+              <div class="small">Mumbai • Edible</div>
+            </div>
+            <div class="card">
+              <div style="display:flex; align-items:center; justify-content:space-between;">
+                <strong>PawShelter</strong>
+                <span class="badge">Shelter</span>
+              </div>
+              <div class="small">Nashik • Feed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="grid grid-3" style="margin-top:16px;" id="history">
+      <div class="card">
+        <div class="small">Step 1</div>
+        <strong>List Waste</strong>
+        <div class="small">Describe type, weight, and location.</div>
+      </div>
+      <div class="card">
+        <div class="small">Step 2</div>
+        <strong>Get Matched</strong>
+        <div class="small">NGOs/Plants reserve and schedule pickup.</div>
+      </div>
+      <div class="card">
+        <div class="small">Step 3</div>
+        <strong>Earn Eco Score</strong>
+        <div class="small">Complete pickup and grow your impact.</div>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section style="margin-top:16px;">
+      <h3>Your Waste History</h3>
+      <div id="wasteHistory" class="grid grid-3"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Worthy Waste</div>
+  </footer>
+
+  <script src="nav.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      initSupplierPage();
+    });
+  </script>
+</body>
+</html>

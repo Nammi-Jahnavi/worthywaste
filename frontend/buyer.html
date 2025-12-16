@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buyer • Worthy Waste</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">Worthy Waste</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="supplier.html">Supplier</a>
+        <a href="buyer.html">Buyer</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding:24px 0;">
+    <h1>Buyer Dashboard</h1>
+    <p class="small">Browse available waste listings and book pickups.</p>
+
+    <section class="card" style="margin:16px 0;">
+      <h3>Filters</h3>
+      <div class="grid grid-3">
+        <div>
+          <label class="label" for="filterLocation">Location</label>
+          <input id="filterLocation" class="input" type="text" placeholder="Search location" />
+        </div>
+        <div>
+          <label class="label" for="filterMinWeight">Min weight (kg)</label>
+          <input id="filterMinWeight" class="input" type="number" step="0.1" min="0" />
+        </div>
+        <div>
+          <label class="label" for="filterMaxWeight">Max weight (kg)</label>
+          <input id="filterMaxWeight" class="input" type="number" step="0.1" min="0" />
+        </div>
+      </div>
+      <div style="margin-top:12px;">
+        <button id="applyFilters" class="btn btn-outline">Apply Filters</button>
+      </div>
+    </section>
+
+    <section>
+      <h3>Available Listings</h3>
+      <div id="listingGrid" class="grid grid-3"></div>
+    </section>
+
+    <section style="margin-top:24px;">
+      <h3>Your Bookings</h3>
+      <div id="bookingsList" class="grid grid-3"></div>
+    </section>
+
+    
+
+    <section style="margin-top:24px;">
+      <h3>Buyer Features (NGOs, Animal Shelters, Biogas/Compost Plants)</h3>
+      <div class="card">
+        <ul style="margin:0; padding-left:18px;">
+          <li>✔ Live Marketplace View — Browse waste listings sorted by type, location, freshness, price/kg.</li>
+          <li>✔ Priority Matching — NGOs get first access to edible food for free.</li>
+          <li>✔ Smart Bidding/Booking — Biogas plants & composters can book or purchase waste by weight.</li>
+          <li>✔ Logistics Support — Route optimization to cut transport cost & time.</li>
+          <li>✔ Digital Proof & Verification — Mark items as collected/used for transparency.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Worthy Waste</div>
+  </footer>
+
+  <script src="nav.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      initBuyerPage();
+    });
+  </script>
+</body>
+</html>

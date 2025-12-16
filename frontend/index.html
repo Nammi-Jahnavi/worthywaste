@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Worthy Waste</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">Worthy Waste</div>
+      <nav>
+        <a href="supplier.html">Supplier</a>
+        <a href="buyer.html">Buyer</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Turning Waste into Worth 🌱</h1>
+        <p>Connect suppliers and buyers to reduce landfill, produce compost, and cut CO₂.</p>
+        <div class="cta-buttons">
+          <a class="btn btn-primary" href="supplier.html">I sell Waste</a>
+          <a class="btn btn-outline" href="buyer.html">I Buy Waste</a>
+        </div>
+        <div class="counters">
+          <div class="counter-card">
+            <div class="counter-value" id="wasteSaved">0 kg</div>
+            <div class="counter-label">Waste Saved</div>
+          </div>
+          <div class="counter-card">
+            <div class="counter-value" id="compostProduced">0 kg</div>
+            <div class="counter-label">Compost Produced</div>
+          </div>
+          <div class="counter-card">
+            <div class="counter-value" id="co2Reduced">0 kg</div>
+            <div class="counter-label">CO₂ Reduced</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-illustration">
+        <div class="illustration-placeholder">Eco Illustration</div>
+      </div>
+    </section>
+  </main>
+
+
+
+  <script src="nav.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCounters();
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>
